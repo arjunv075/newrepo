@@ -15,11 +15,13 @@ def get_random_word(wordlist="/usr/share/dict/words"):
 
         return random.choice(good_words)
     
-
-def mask_letters(word):
-    masked_word = ""
-    for letter in word:
-            masked_word += "_"
-    return masked_word
-
-
+def get_mask_word(word, guesses):
+    """Returns the provided word with all
+    letters except the ones in guesses replaced by -"""
+    ret = []
+    for i in word:
+        if i in guesses:
+            ret.append(i)
+        else:
+            ret.append("-")
+    return "".join(ret)
